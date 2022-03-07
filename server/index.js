@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express()
-const port = 5000
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { auth } = require('./middleware/auth');
@@ -15,8 +14,12 @@ app.use(bodyParser.urlencoded({extended: true}));
 //application/json
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.get('/', (req,res) => res.send('Hello World!~ 많이 사랑해 새해복 많이 받으세요'))
 
+app.get('/', (req,res) => res.send('Hello World!~ 많이 사랑해 새해복 많이 받으세요'))
+app.get('/api/hello',(req,res)=>{
+    
+    res.send("hello world~")
+})
 
 app.post('/register',(req, res)=>{
     //회원 가입할 때 필요 정보들을 client에서 가져오면 
@@ -84,4 +87,7 @@ app.get('/api/users/logout', auth, (req, res)=>{
             })
         })
 })
+
+const port = 5000
+
 app.listen(port, ()=> console.log(`Example app listening on port ${port}!`))
