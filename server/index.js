@@ -21,7 +21,7 @@ app.get('/api/hello',(req,res)=>{
     res.send("hello world~")
 })
 
-app.post('/register',(req, res)=>{
+app.post('/api/users/register',(req, res)=>{
     //회원 가입할 때 필요 정보들을 client에서 가져오면 
     //그것들을 데이터 베이스에 넣어준다.
     
